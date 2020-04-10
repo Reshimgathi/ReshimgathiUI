@@ -1,0 +1,39 @@
+Angular Commands
+------------------
+
+npm install -g @angular/cli
+
+
+ng new ReshimgathiUI
+
+cd my-app
+ng serve --open
+
+
+
+ng generate component xyz
+
+ng g component Login/Login
+
+ng g c Login
+
+ng generate service backend
+
+ng add @angular/material
+
+ng add @angular/pwa
+
+ng add _____
+
+ng test
+
+ng build --prod
+
+
+---------------
+
+
+
+npm cache clean --force
+
+npm config set registry http://registry.npmjs.org/

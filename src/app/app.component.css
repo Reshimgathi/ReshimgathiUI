@@ -1,0 +1,8 @@
+.companytitle
+{
+    text-decoration: underline;
+    color: #fff;
+    font-size: 2.0em;
+    font-family: 'serif';
+    text-transform: capitalize;
+}
