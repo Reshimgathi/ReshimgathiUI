@@ -13,11 +13,13 @@ ng serve --open
 
 ng generate component xyz
 
-ng g component Login/Login
+ng g component Login
 
 ng g c Login
 
 ng generate service backend
+
+ng g service services/filename --spec false
 
 ng add @angular/material
 

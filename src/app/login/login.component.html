@@ -1,16 +1,24 @@
 <div class="login-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form [formGroup]="loginForm" (ngSubmit)="LoginSubmit(loginForm)">
         <h2 class="text-center">Log in</h2>   
         <div class="form-group">
         	<div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" name="username" placeholder="Username" required="required">				
+                <input type="text" class="form-control" formControlName="username" name="username" placeholder="Username" required="required">	
+                    <div *ngIf="(f.username.touched && f.username.invalid) || submitted" class="alert alert-danger">
+                        <div *ngIf="f.username.errors.required">Username is required.</div>
+                        <div *ngIf="f.username.errors.minlength">Username should be 2 character.</div>
+                    </div>			
             </div>
         </div>
 		<div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="password" placeholder="Password" required="required">				
+                <input type="password" formControlName="password" class="form-control" name="password" placeholder="Password" required="required">				
+                <div *ngIf="(f.password.touched && f.password.invalid) || submitted" class="alert alert-danger">
+                    <div *ngIf="f.password.errors.required">Password is required.</div>
+                    <div *ngIf="f.password.errors.minlength">Password should be 2 character.</div>
+                </div>
             </div>
         </div>        
         <div class="form-group">
