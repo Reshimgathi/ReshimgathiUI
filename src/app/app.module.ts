@@ -15,6 +15,7 @@ import { UserProfileService } from './services/user-profile.service';
 import {TokenInterceptorService} from './services/token-interceptor.service';
 
 import { StorageServiceModule } from 'ngx-webstorage-service';
+//import {sweetalert2Module} from 'sweetalert2';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StorageServiceModule    
+    StorageServiceModule,
+    //sweetalert2Module    
   ],
   providers: [AuthService, UserProfileService,
     {

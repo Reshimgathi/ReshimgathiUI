@@ -4,8 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import { SessionHelperService } from '../services/session-helper.service';
+import Swal from 'sweetalert2';
 
 declare var $: any;
+
 
 @Component({
   selector: 'app-login',
@@ -14,8 +16,11 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 
+  
+
   loginForm : FormGroup;
   submitted : boolean = false;
+  
 
   constructor(private _FormBuilder : FormBuilder,
               private _AuthService : AuthService,
@@ -29,6 +34,13 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(2)])
     },
     { updateOn: "blur" });
+
+    Swal.fire({
+      title: 'Error!',
+      text: 'Do you want to continue',
+      icon: 'error',
+      confirmButtonText: 'Cool'
+    });
   }
 
   get f(){

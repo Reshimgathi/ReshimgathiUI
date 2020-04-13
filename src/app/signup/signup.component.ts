@@ -82,15 +82,6 @@ export class SignupComponent implements OnInit {
     return false;
   }
 
-  private async SendOTP2(channel : string) 
-  {  
-    let response = await this._OTPService.SendOTP2(channel);
-    console.log("sendotp1: "+response);
-    
-    return false;
-  }
-  
-
   /**
    * CreateUserProfileData
    */
