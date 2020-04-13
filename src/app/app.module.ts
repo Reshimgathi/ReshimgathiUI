@@ -11,6 +11,10 @@ import { SignupComponent } from './signup/signup.component';
 import { OTPComponent } from './otp/otp.component';
 
 import { AuthService } from './services/auth.service';
+import { UserProfileService } from './services/user-profile.service';
+import {TokenInterceptorService} from './services/token-interceptor.service';
+
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -24,9 +28,15 @@ import { AuthService } from './services/auth.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule      
+    HttpClientModule,
+    StorageServiceModule    
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserProfileService,
+    {
+    provide:HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

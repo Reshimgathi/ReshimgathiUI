@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
+import {map, retry, catchError} from 'rxjs/operators';
 
 
 @Injectable({
@@ -9,20 +9,37 @@ import {map} from 'rxjs/operators';
 })
 export class AuthService {
   
-  header : any;
+  public Header : HttpHeaders;
   
   constructor(private _http:HttpClient) {
-    this.header = new HttpHeaders({
+    this.Header = new HttpHeaders({
       'Content-Type' : 'application/json'
     });
    }
 
     LoginVerifyPostCall(data) : Observable<any> 
     {
-      return this._http.post('http://localhost:51542/api/login/verify', data, {headers:this.header})
-        .pipe(map(response => {
-          return response;
+      return this._http.post('http://localhost:51542/api/login/verify', data, {headers:this.Header})
+        .pipe(
+          retry(1),
+          catchError(this.HandleError),
+          map(response => {
+            return response;
         }))
     }
 
+    //Error Handling
+    private HandleError(error) {
+      let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = `Error: ${error.error.message}`;
+        } else {
+            // server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        console.log(errorMessage);
+
+        return throwError(errorMessage);
+    }
 }

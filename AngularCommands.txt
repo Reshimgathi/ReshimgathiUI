@@ -39,3 +39,16 @@ ng build --prod
 npm cache clean --force
 
 npm config set registry http://registry.npmjs.org/
+
+
+
+-----------------------------
+Lib
+-----------------------------
+npm install --save ngx-webstorage-service
+
+npm install sweetalert2
+
+
+If you got error : ngcc entry points json error
+npm install -D ng-packagr
