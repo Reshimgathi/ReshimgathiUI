@@ -50,18 +50,33 @@ export class SignupComponent implements OnInit {
       this._OTPService.UserRegData = userRegData 
       
       //call Generate OTP api.
-      if(this.SendOTP(this.signupForm.value.mobile))
+      let resSendOTP = this.SendOTP(this.signupForm.value.mobile);
+      if(resSendOTP['responseobj'].isotpsent)
       {
         //send data to OTP form.
+        this._Talk.Success(new TalkParam({
+          Title: "OTP sent successfully", 
+          Text:"Please check your device.", 
+          Icon: "success", 
+          ConfirmButtonText:"Ok"}));
         this._Router.navigateByUrl('OTP', userRegData);      
         this.signupForm.reset();
       }
+      else if(!resSendOTP['responseobj'].isotpsent && resSendOTP['responseobj'].isprofilealreadyreg)
+      {
+        this._Talk.Failure(new TalkParam({
+          Title: "Profile Already There", 
+          Text:"You can not use this mobile number. As this is been already registered.", 
+          Icon: "error", 
+          ConfirmButtonText:"Ok"}));
+        console.log("//sweet alerts : Profile Already There.You can not use this mobile number. As this is been already registered.");
+      }
       else
       {
-        this._Talk.Success(new TalkParam({
+        this._Talk.Failure(new TalkParam({
           Title: "OTP Generation issue.", 
           Text:"Try after some time.", 
-          Icon: "success", 
+          Icon: "error", 
           ConfirmButtonText:"Ok"}));
         console.log("//sweet alerts : Issues while generating OTP. Try after some time. ");
       } 
@@ -79,14 +94,9 @@ export class SignupComponent implements OnInit {
    */
   private async SendOTP(channel : string) : Promise<any> 
   {  
-    let response = await this._OTPService.SendOTP(channel).toPromise();
-    if(response.responseobj.isotpsent)
-    {
-      //send true after OTP is sent successfully.
-      return true;
-    }
+    let response = await this._OTPService.SendOTP(channel, true).toPromise();
     
-    return false;
+    return response;
   }
 
   /**

@@ -17,29 +17,9 @@ export class OTPService {
     });
    }
 
-   SendOTP2(channel: any) {
-    const promise = new Promise((resolve, reject) => {
-      const apiURL = "http://localhost:51542/api/otp/send/" + channel;
-      this._http
-        .get(apiURL)
-        .toPromise()
-        .then((response: any) => {
-          // Success
-          console.log(JSON.stringify(response));
-          return JSON.stringify(response);
-        },
-          err => {
-            // Error
-            reject(err);
-          }
-        );
-    });
-    return promise;
-  }
-
-   public SendOTP(channel) : Observable<any> 
+   public SendOTP(channel, type : boolean) : Observable<any> 
     {
-      return this._http.post('http://localhost:51542/api/otp/send/'+channel, null, {headers:this.Header})
+      return this._http.post('http://localhost:51542/api/otp/send/'+channel+'/'+type, null, {headers:this.Header})
         .pipe(
           retry(1),
           catchError(this.HandleError),

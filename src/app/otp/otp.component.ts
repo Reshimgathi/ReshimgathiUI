@@ -56,10 +56,12 @@ export class OTPComponent implements OnInit {
         let data = this.PrepareVerifyOTPData(this.otpForm.value);
 
         //valid user. Place Api call for OTP verification.
-        if(this.VerifyOTP(data))
+        let resVerifyOTP = this.VerifyOTP(data);
+        if(resVerifyOTP['responseobj'].isotpverified)
         {
           //Place api call for user registration.
-          if(this.CreateUserProfile(this._UserRegData))//user registration successful
+          let resCreateUserProfile = this.CreateUserProfile(this._UserRegData);
+          if(resCreateUserProfile['responseobj'].isprofilesaved)//user registration successful
           {
             this._Talk.Success(new TalkParam({
               Title: "User Profile Created", 
@@ -68,6 +70,15 @@ export class OTPComponent implements OnInit {
               ConfirmButtonText:"Welcome!"}));
             console.log("profile created.");
             //redirect to dashboard page. 
+          }
+          else if(!resCreateUserProfile['responseobj'].isprofilesaved && resCreateUserProfile['responseobj'].isprofilealreadyreg)
+          {
+            this._Talk.Failure(new TalkParam({
+              Title: "Profile Already There", 
+              Text:"You can not use this mobile number. As this is been already registered.", 
+              Icon: "error", 
+              ConfirmButtonText:"Ok"}));
+            console.log("//sweet alerts : Profile Already There.You can not use this mobile number. As this is been already registered.");    
           }
           else{
             this._Talk.Failure(new TalkParam({
@@ -82,7 +93,7 @@ export class OTPComponent implements OnInit {
         {
           this._Talk.Failure(new TalkParam({
             Title: "OTP verification failed.", 
-            Text:"Provide correct OTP.", 
+            Text:"Please, provide correct OTP.", 
             Icon: "error", 
             ConfirmButtonText:"Ok"}));
           console.log("//sweet alerts: OTP verification failed. Please try again registering with valid mobile number.");
@@ -123,14 +134,7 @@ export class OTPComponent implements OnInit {
   {
     let response = await this._OTPService.VerifyOTP(data).toPromise();
 
-    if(response['responseobj'].isotpsent)
-    {
-      //send true after OTP is sent successfully.
-      return true;
-    }
-    else{
-      return false;
-    }
+    return response;
   }
 
   /**
@@ -138,12 +142,7 @@ export class OTPComponent implements OnInit {
    */
   private async CreateUserProfile(userProfileReg) : Promise<any> {
     let response = this._UserProfileService.UserRegistrationPhaseI(userProfileReg).toPromise();
-    if(response['responseobj'].isprofilesaved)
-    {
-      return true; //If everything is as per expected for user profile registration. 
-    }
-    else{
-      return false;
-    }
+    
+    return response;
   }
 }

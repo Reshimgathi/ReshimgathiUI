@@ -8,10 +8,7 @@ export class TalkService {
 
   constructor() { }
 
-  /**
-   * static Success
-   */ 
-  public Success(p : TalkParam) : void  {
+  private SweetAlert(p : TalkParam) : void {
     Swal.fire({
       title: p.Title,
       text: p.Text,
@@ -21,15 +18,17 @@ export class TalkService {
   }
 
   /**
+   * Success
+   */ 
+  public Success(p : TalkParam) : void  {
+    this.SweetAlert(p);
+  }
+
+  /**
    * Failure
    */
   public Failure(p : TalkParam) : void {
-    Swal.fire({
-      title: p.Title,
-      text: p.Text,
-      icon: p.Icon,
-      confirmButtonText: p.ConfirmButtonText
-    });
+    this.SweetAlert(p);
   }
 }
 
