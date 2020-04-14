@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit, ɵConsole, ViewChild, ElementRef } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
 
   public signupForm : FormGroup;
   public submitted : boolean = false;
+  @ViewChild('mobilenumber') mobilenumber: ElementRef;
 
   constructor(private _FormBuilder : FormBuilder,
     private _Router : Router,
@@ -30,7 +31,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this._FormBuilder.group({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      mobile: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      mobile: new FormControl('', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]),
       password: new FormControl('', [Validators.required, Validators.minLength(2)]),
       gender: new FormControl('', [Validators.required]),
       termsandconditions: new FormControl('', [Validators.required])
@@ -42,15 +43,19 @@ export class SignupComponent implements OnInit {
     return this.signupForm.controls;
   }
 
-  public SignupSubmit(form) 
+  get mobile(): any { return this.signupForm.get('mobile'); }
+
+  public async SignupSubmit(form) 
   {  
     if(this.signupForm.valid)
     {
-      let userRegData = this.CreateUserProfileData(this.signupForm.value);
+      let userRegData = await this.CreateUserProfileData(this.signupForm.value);
       this._OTPService.UserRegData = userRegData 
+      //console.log("Signup: "+this._OTPService.UserRegData);
       
       //call Generate OTP api.
-      let resSendOTP = this.SendOTP(this.signupForm.value.mobile);
+      let resSendOTP = await this.SendOTP(this.signupForm.value.mobile);
+      //console.log(this._OTPService.UserRegData);
       if(resSendOTP['responseobj'].isotpsent)
       {
         //send data to OTP form.
@@ -59,16 +64,20 @@ export class SignupComponent implements OnInit {
           Text:"Please check your device.", 
           Icon: "success", 
           ConfirmButtonText:"Ok"}));
-        this._Router.navigateByUrl('OTP', userRegData);      
+
+        this._Router.navigateByUrl('OTP');      
         this.signupForm.reset();
       }
       else if(!resSendOTP['responseobj'].isotpsent && resSendOTP['responseobj'].isprofilealreadyreg)
       {
         this._Talk.Failure(new TalkParam({
-          Title: "Profile Already There", 
-          Text:"You can not use this mobile number. As this is been already registered.", 
+          Title: "Mobile number already used.", 
+          Text:"This mobile number has already been linked to other profile. Please use other mobile number.", 
           Icon: "error", 
-          ConfirmButtonText:"Ok"}));
+          ConfirmButtonText:"Change Mobile No"}));
+
+          this.mobile.reset();
+          this.mobilenumber.nativeElement.focus();
         console.log("//sweet alerts : Profile Already There.You can not use this mobile number. As this is been already registered.");
       }
       else
@@ -95,14 +104,14 @@ export class SignupComponent implements OnInit {
   private async SendOTP(channel : string) : Promise<any> 
   {  
     let response = await this._OTPService.SendOTP(channel, true).toPromise();
-    
+
     return response;
   }
 
   /**
    * CreateUserProfileData
    */
-  private CreateUserProfileData(formValues) : any {
+  private async CreateUserProfileData(formValues) {
         let registration = { 
           FirstName : formValues.firstName, 
           LastName : formValues.lastName,

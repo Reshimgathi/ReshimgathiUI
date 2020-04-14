@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
@@ -18,6 +18,7 @@ export class OTPComponent implements OnInit {
   public submitted : boolean = false;
   public SentSignUpFormValues : FormBuilder = null;
   private _UserRegData : any = null;
+  @ViewChild('otp') otp: ElementRef;
 
   constructor(private _FormBuilder : FormBuilder,
     private _UserProfileService : UserProfileService,
@@ -27,7 +28,6 @@ export class OTPComponent implements OnInit {
     private _Injector:Injector) { }
 
   ngOnInit(): void {
-    
     //Receive SignupForm post data here. 
     if(this._OTPService.UserRegData != null)
     {
@@ -44,23 +44,26 @@ export class OTPComponent implements OnInit {
     return this.otpForm.controls;
   }
 
+  get otpControl(): any { return this.otpForm.get('otp'); }
+
   /**
    * OTPSubmit
    */
-  public OTPSubmit(form) {
+  public async OTPSubmit(form) {
     if(this.otpForm.valid)
     {
       if(this._UserRegData != null)
       {
         //prepare verify otp data object.
-        let data = this.PrepareVerifyOTPData(this.otpForm.value);
+        let data = await this.PrepareVerifyOTPData(this.otpForm.value.otp);
+        console.log(data);
 
         //valid user. Place Api call for OTP verification.
-        let resVerifyOTP = this.VerifyOTP(data);
+        let resVerifyOTP = await this.VerifyOTP(data);
         if(resVerifyOTP['responseobj'].isotpverified)
         {
           //Place api call for user registration.
-          let resCreateUserProfile = this.CreateUserProfile(this._UserRegData);
+          let resCreateUserProfile = await this.CreateUserProfile(this._UserRegData);
           if(resCreateUserProfile['responseobj'].isprofilesaved)//user registration successful
           {
             this._Talk.Success(new TalkParam({
@@ -68,17 +71,10 @@ export class OTPComponent implements OnInit {
               Text:"Welcome to Reshimgathi Matrimony !!", 
               Icon: "success", 
               ConfirmButtonText:"Welcome!"}));
+
+            this.otpControl.reset();
             console.log("profile created.");
             //redirect to dashboard page. 
-          }
-          else if(!resCreateUserProfile['responseobj'].isprofilesaved && resCreateUserProfile['responseobj'].isprofilealreadyreg)
-          {
-            this._Talk.Failure(new TalkParam({
-              Title: "Profile Already There", 
-              Text:"You can not use this mobile number. As this is been already registered.", 
-              Icon: "error", 
-              ConfirmButtonText:"Ok"}));
-            console.log("//sweet alerts : Profile Already There.You can not use this mobile number. As this is been already registered.");    
           }
           else{
             this._Talk.Failure(new TalkParam({
@@ -86,6 +82,8 @@ export class OTPComponent implements OnInit {
               Text:"User Registration Failed.", 
               Icon: "error", 
               ConfirmButtonText:"Ok"}));
+            
+            this.otpControl.reset();
             console.log("//sweet alerts: Server error while registering the user profile. Try agian."); 
           }
         }
@@ -96,6 +94,8 @@ export class OTPComponent implements OnInit {
             Text:"Please, provide correct OTP.", 
             Icon: "error", 
             ConfirmButtonText:"Ok"}));
+
+          this.otpControl.reset();
           console.log("//sweet alerts: OTP verification failed. Please try again registering with valid mobile number.");
         }
       }
@@ -105,6 +105,8 @@ export class OTPComponent implements OnInit {
           Text:"First do User Profile Registration", 
           Icon: "error", 
           ConfirmButtonText:"Ok"}));
+        
+        this.otpControl.reset();
         console.log("//Sweet alerts: First do User Profile Registration and then come here."); 
       }
     }
@@ -117,13 +119,12 @@ export class OTPComponent implements OnInit {
     }  
   }
 
-  private PrepareVerifyOTPData(otp : string) : any {
+  private async PrepareVerifyOTPData(otp : string) {
     let data = {
-            mobile:this._UserRegData.registration.mobile,
+            mobile:this._UserRegData['registration'].MobileNumber,
             email:"",
             otp:otp      
     }
-
     return data;
   }
 

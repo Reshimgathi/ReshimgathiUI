@@ -4,7 +4,7 @@
         <div class="form-group">
         	<div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text"  formControlName="otp" class="form-control" name="otp" placeholder="Enter OTP" required="required" minlength="6" maxlength="6" >				
+                <input type="text" #otp  formControlName="otp" class="form-control" name="otp" placeholder="Enter OTP" required="required" minlength="6" maxlength="6" >				
                 <div *ngIf="((f.otp.dirty || f.otp.touched) && f.otp.invalid) || submitted" class="alert alert-danger">
                     <div *ngIf="f.otp.errors.required">OTP is required.</div>
                     <div *ngIf="f.otp.errors.minlength">OTP should be min 6 character.</div>
