@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import { SessionHelperService } from '../services/session-helper.service';
-import Swal from 'sweetalert2';
+import { TalkService, TalkParam } from '../services/talk.service';
+import { Title } from '@angular/platform-browser';
 
 declare var $: any;
 
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private _FormBuilder : FormBuilder,
               private _AuthService : AuthService,
               private _SessionHelper : SessionHelperService,
+              private _Talk : TalkService,
               private _Injector:Injector) { }
 
 
@@ -34,13 +36,6 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(2)])
     },
     { updateOn: "blur" });
-
-    Swal.fire({
-      title: 'Error!',
-      text: 'Do you want to continue',
-      icon: 'error',
-      confirmButtonText: 'Cool'
-    });
   }
 
   get f(){
@@ -62,6 +57,12 @@ export class LoginComponent implements OnInit {
                 this._SessionHelper.SetSessionStorage(
                   this._SessionHelper.UserProfileId, 
                   response.responseobj.userprofileid);
+
+                  this._Talk.Success(new TalkParam({
+                    Title: "Good job!", 
+                    Text:"Login Successful.", 
+                    Icon: "success", 
+                    ConfirmButtonText:"Proceed"}));
             }
 
           }, error => {

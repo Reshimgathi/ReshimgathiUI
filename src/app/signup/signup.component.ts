@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {UserProfileService} from '../services/user-profile.service';
 import { SessionHelperService } from '../services/session-helper.service';
 import {OTPService} from '../services/otp.service';
+import { TalkService, TalkParam } from '../services/talk.service';
 
 @Component({
   selector: 'app-signup',
@@ -22,6 +23,7 @@ export class SignupComponent implements OnInit {
     private _UserProfileService : UserProfileService,
     private _OTPService : OTPService,
     private _SessionHelper : SessionHelperService,
+    private _Talk : TalkService,
     private _Injector:Injector) { }
 
   ngOnInit(): void {
@@ -56,6 +58,11 @@ export class SignupComponent implements OnInit {
       }
       else
       {
+        this._Talk.Success(new TalkParam({
+          Title: "OTP Generation issue.", 
+          Text:"Try after some time.", 
+          Icon: "success", 
+          ConfirmButtonText:"Ok"}));
         console.log("//sweet alerts : Issues while generating OTP. Try after some time. ");
       } 
     }

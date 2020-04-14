@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
 import {UserProfileService} from '../services/user-profile.service';
 import {OTPService} from '../services/otp.service';
 import { SessionHelperService } from '../services/session-helper.service';
+import { TalkService, TalkParam } from '../services/talk.service';
 
 @Component({
   selector: 'app-otp',
@@ -21,6 +22,7 @@ export class OTPComponent implements OnInit {
   constructor(private _FormBuilder : FormBuilder,
     private _UserProfileService : UserProfileService,
     private _OTPService : OTPService,
+    private _Talk : TalkService,
     private _SessionHelper : SessionHelperService,
     private _Injector:Injector) { }
 
@@ -59,20 +61,39 @@ export class OTPComponent implements OnInit {
           //Place api call for user registration.
           if(this.CreateUserProfile(this._UserRegData))//user registration successful
           {
+            this._Talk.Success(new TalkParam({
+              Title: "User Profile Created", 
+              Text:"Welcome to Reshimgathi Matrimony !!", 
+              Icon: "success", 
+              ConfirmButtonText:"Welcome!"}));
             console.log("profile created.");
-            alert("Profile Created");
             //redirect to dashboard page. 
           }
           else{
+            this._Talk.Failure(new TalkParam({
+              Title: "Server Error", 
+              Text:"User Registration Failed.", 
+              Icon: "error", 
+              ConfirmButtonText:"Ok"}));
             console.log("//sweet alerts: Server error while registering the user profile. Try agian."); 
           }
         }
         else
         {
+          this._Talk.Failure(new TalkParam({
+            Title: "OTP verification failed.", 
+            Text:"Provide correct OTP.", 
+            Icon: "error", 
+            ConfirmButtonText:"Ok"}));
           console.log("//sweet alerts: OTP verification failed. Please try again registering with valid mobile number.");
         }
       }
       else{
+        this._Talk.Failure(new TalkParam({
+          Title: "OTP is not registered.", 
+          Text:"First do User Profile Registration", 
+          Icon: "error", 
+          ConfirmButtonText:"Ok"}));
         console.log("//Sweet alerts: First do User Profile Registration and then come here."); 
       }
     }
@@ -117,12 +138,9 @@ export class OTPComponent implements OnInit {
    */
   private async CreateUserProfile(userProfileReg) : Promise<any> {
     let response = this._UserProfileService.UserRegistrationPhaseI(userProfileReg).toPromise();
-    
-    console.log(response);
     if(response['responseobj'].isprofilesaved)
     {
-      //If everything is as per expected for user profile registration. 
-      return true;
+      return true; //If everything is as per expected for user profile registration. 
     }
     else{
       return false;
