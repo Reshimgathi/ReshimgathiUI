@@ -10,12 +10,12 @@ cache:
   directories:
     - ./node_modules
 
-install:
-  - npm install
-
 branches:
   only:
   - develop
+
+install:
+  - npm install
 
 before_script:
   - npm install -g @angular/cli
