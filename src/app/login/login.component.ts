@@ -9,7 +9,6 @@ import { Title } from '@angular/platform-browser';
 
 declare var $: any;
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,11 +16,8 @@ declare var $: any;
 })
 export class LoginComponent implements OnInit {
 
-  
-
   loginForm : FormGroup;
   submitted : boolean = false;
-  
 
   constructor(private _FormBuilder : FormBuilder,
               private _AuthService : AuthService,
@@ -64,6 +60,13 @@ export class LoginComponent implements OnInit {
                     Icon: "success", 
                     ConfirmButtonText:"Proceed"}));
             }
+            else{
+              this._Talk.Failure(new TalkParam({
+                Title: "Login Failed!", 
+                Text:"Please try with correct login credentials.", 
+                Icon: "error", 
+                ConfirmButtonText:"Ok"}));
+            }
 
           }, error => {
               console.log("Error "+error);
@@ -78,13 +81,4 @@ export class LoginComponent implements OnInit {
       });
     }  
   }//LoginSubmit ends here.
-
-  /**
-   * OnLoadCheckLoginStatus
-   */
-  public OnLoadCheckLoginStatus() : boolean {
-    
-    return false;
-  }
-
 }
