@@ -1,4 +1,4 @@
-# ReshimgathiUI  ![Build Status](https://travis-ci.com/Reshimgathi/ReshimgathiUI.svg?branch=develop)
+# ReshimgathiUI  <a href="https://travis-ci.com/github/Reshimgathi/ReshimgathiUI"><img src="https://travis-ci.com/Reshimgathi/ReshimgathiUI.svg?branch=develop" alt="Build Status"></a>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
