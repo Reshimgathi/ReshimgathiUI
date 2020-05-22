@@ -21,6 +21,7 @@ export class OTPComponent implements OnInit {
   @ViewChild('otp') otp: ElementRef;
 
   constructor(private _FormBuilder : FormBuilder,
+    private _Router : Router,
     private _UserProfileService : UserProfileService,
     private _OTPService : OTPService,
     private _Talk : TalkService,
@@ -75,6 +76,9 @@ export class OTPComponent implements OnInit {
             this.otpControl.reset();
             console.log("profile created.");
             //redirect to dashboard page. 
+            this._Router.navigateByUrl('Dashboard');      
+
+
           }
           else{
             this._Talk.Failure(new TalkParam({

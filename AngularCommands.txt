@@ -17,6 +17,8 @@ ng g component Login
 
 ng g c Login
 
+ng g c Login
+
 ng generate service backend
 
 ng g service services/filename --spec false

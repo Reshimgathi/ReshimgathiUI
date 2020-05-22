@@ -51,11 +51,11 @@ export class SignupComponent implements OnInit {
     {
       let userRegData = await this.CreateUserProfileData(this.signupForm.value);
       this._OTPService.UserRegData = userRegData 
-      //console.log("Signup: "+this._OTPService.UserRegData);
+      console.log("Signup: "+this._OTPService.UserRegData);
       
       //call Generate OTP api.
       let resSendOTP = await this.SendOTP(this.signupForm.value.mobile);
-      //console.log(this._OTPService.UserRegData);
+      console.log(this._OTPService.UserRegData);
       if(resSendOTP['responseobj'].isotpsent)
       {
         //send data to OTP form.
