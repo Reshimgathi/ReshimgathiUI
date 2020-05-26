@@ -16,7 +16,7 @@ import {TokenInterceptorService} from './services/token-interceptor.service';
 
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { DashboardComponent } from './dashboard/dashboard.component';
-//import {sweetalert2Module} from 'sweetalert2';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     SignupComponent,
     OTPComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpClientModule,
     StorageServiceModule,
-    //sweetalert2Module    
+    BrowserAnimationsModule, 
+  ],
+  exports: [
   ],
   providers: [AuthService, UserProfileService,
     {

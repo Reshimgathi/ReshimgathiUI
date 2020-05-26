@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   submitted : boolean = false;
 
   constructor(private _FormBuilder : FormBuilder,
+              private _Router : Router,
               private _AuthService : AuthService,
               private _SessionHelper : SessionHelperService,
               private _Talk : TalkService,
@@ -73,6 +74,8 @@ export class LoginComponent implements OnInit {
           });
 
           this.loginForm.reset();
+          //redirect to dashboard page. 
+          this._Router.navigateByUrl('Dashboard');   
     }
     else{
       Object.keys(this.loginForm.controls).forEach(field => { // {1}
