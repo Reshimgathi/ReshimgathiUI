@@ -1,0 +1,40 @@
+<div class="container" style="padding-top: 20px;">
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Brides</h4>
+                <p>Find your Bride !!</p>
+              </div>
+              <div class="card">
+                
+                <div class="card-body">
+                  <table class="table table-striped table-bordered table-sm row-border table-hover" datatable [dtOptions]="dtOptions">
+                    <thead>
+                      <tr>
+                        <th>Favourites</th>
+                        <th>Reg. No</th>
+                        <th>Reg. Date</th>
+                        <th>DOB</th>
+                        <th>Education</th>
+                        <th>Residence</th>
+                        <th>Occupation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     <tr *ngFor="let group of data">
+                        <td style="text-align: center;"><a class="btn btn-primary btn-sm" href="javascript:void(0)"><i class="fa fa-user"></i> &nbsp;Mark Favourite</a></td>
+                        <td>{{group.regno}}</td>
+                        <td>{{group.regdate}}</td>
+                        <td>{{group.dob}}</td>
+                        <td>{{group.education}}</td>
+                        <td>{{group.residence}}</td>
+                        <td>{{group.occupation}}</td>
+                       </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-footer-->
+              </div>
+        </div>
+    </div>
+</div>

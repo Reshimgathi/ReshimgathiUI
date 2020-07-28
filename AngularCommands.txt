@@ -17,7 +17,7 @@ ng g component Login
 
 ng g c Login
 
-ng g c Login
+ng g c OpDashboard
 
 ng generate service backend
 
@@ -54,3 +54,51 @@ npm install sweetalert2
 
 If you got error : ngcc entry points json error
 npm install -D ng-packagr
+
+
+npm install -g //npm to update
+
+
+Explore on
+----------
+0. Maintain mutiple Routing and Module files. - Done
+1. Child Components - Not Required.
+2. Multiple Router outlets.
+3. Resolve IE issue for Angular 9 - Done.
+4. #gotopage anchor issue. 
+5. Active class apply. - Done.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

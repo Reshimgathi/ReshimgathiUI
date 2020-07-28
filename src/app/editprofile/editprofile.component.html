@@ -1,0 +1,656 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2 id="heading">Edit My Profile</h2>
+                <p>Fill all form field to go to next step</p>
+                <form id="msform">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active" id="personal"><strong>Personal</strong></li>
+                        <li id="horoscope"><strong>Horoscope</strong></li>
+                        <li id="education"><strong>Education</strong></li>
+                        <li id="address"><strong>Contact</strong></li>
+                        <li id="familybg"><strong>Family</strong></li>
+                        <li id="expectation"><strong>Expectation</strong></li>
+                        <li id="photos"><strong>Photos</strong></li>
+                        <li id="confirm"><strong>Payment</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> 
+                    <br> <!-- fieldsets -->
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Personal Information:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 1 - 8</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="fieldlabels">First Name:</label> 
+                                    <input type="text" name="firstname" id="firstname" placeholder="First Name" />
+
+                                    <label class="fieldlabels">Date of Birth:</label> 
+                                    <input type="date" name="dob" id="dob" placeholder="DOB" />
+
+                                    <label class="fieldlabels">Maritial Status :</label> 
+                                    <input type="text" name="maritialstatus" id="maritialstatus" placeholder="Maritial Status" />
+
+                                    <label class="fieldlabels">Blood Group  :</label> 
+                                    <select name="bloodgroup" id="bloodgroup" class="form-control">
+                                        <option>Choose Bloodgroup</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="NA">Not Sure</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Physical Disablities :</label> 
+                                    <input type="text" name="physicaldisablities" id="physicaldisablities" placeholder="Physical Disablities" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Middle Name:</label> 
+                                    <input type="text" name="middlename" id="middlename" placeholder="Middle Name" />
+
+                                    <label class="fieldlabels">Sub Caste:</label> 
+                                    <select name="subcaste" id="subcaste" class="form-control">
+                                        <option>Choose Subcaste</option>
+                                        <option value="Deshmukh">Deshmukh</option>
+                                        <option value="96 Kuli">96 Kuli</option>
+                                        <option value="Maratha">Maratha</option>
+                                        <option value="kunbi">kunbi</option>
+                                        <option value="Deshmukh Maratha">Deshmukh Maratha</option>
+                                        <option value="96 Kuli Maratha">96 Kuli Maratha</option>
+                                        <option value="Tirale kunbi">Tirale kunbi</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Height (In inches): Eg. 5.8</label> 
+                                    <input type="number" name="height" id="height" placeholder="Height" />
+
+                                    <label class="fieldlabels">Complexion :</label> 
+                                    <input type="text" name="complexion" id="complexion" placeholder="Complexion" />
+
+                                    <label class="fieldlabels">If Yes, Please Specify :</label> 
+                                    <input type="text" name="yesphysicaldisablities" id="yesphysicaldisablities" placeholder="If Yes, Please Specify " />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Last Name:</label> 
+                                    <input type="text" name="lastname" id="lastname" placeholder="Last Name" /> 
+                                    
+                                    <label class="fieldlabels">Gender:</label> 
+                                    <select id="gender" name="gender" class="form-control">
+                                        <option selected>Choose Gender</option>
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                    <label class="fieldlabels">Weight (In KG): Eg.72</label> 
+                                    <input type="number" name="weight" id="weight" placeholder="Weight" />
+
+                                    <label class="fieldlabels">Diet (Veg/Non Veg):</label> 
+                                    <select id="diet" name="diet" class="form-control">
+                                        <option selected>Choose Diet</option>
+                                        <option value="0">Veg</option>
+                                        <option value="1">Non-Veg</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Spectacles :</label> 
+                                    <select id="spectacles" name="spectacles" class="form-control">
+                                        <option selected>If Spectacles</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    
+                                </div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Horoscope Information</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 2 - 8</h2>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="fieldlabels">Rashi (Specify):</label> 
+                                    <select size="1" name="rashi" id="rashi" class="form-control">
+                                        <option>Choose Rashi</option>
+                                        <option value="Mesh">Mesh</option>
+                                        <option value="Vrushabh">Vrushabh</option>
+                                        <option value="mithun">Mithun</option>
+                                        <option value="kark">Kark</option>
+                                        <option value="sinha">Sinha</option>
+                                        <option value="kanya">Kanya</option>
+                                        <option value="tula">Tula</option>
+                                        <option value="vrischik">Vrischik</option>
+                                        <option value="dhanu">Dhanu</option>
+                                        <option value="makar">Makar</option>
+                                        <option value="kumbh">Kumbh</option>
+                                        <option value="meen">Meen</option>
+                                        <option value="NA">Unknown</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Nadi (Specify):</label> 
+                                    <select size="1" id="nadi" name="nadi" class="form-control">
+                                        <option>Choose Nadi</option>
+                                        <option value="Adhya">Adhya</option>
+                                        <option value="Madhya">Madhya </option>
+                                        <option value="Antya">Antya</option>
+                                        <option value="NA">Unknown</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Birth Time :</label> 
+                                    <input type="time" name="birthtime" id="birthtime" placeholder="Birth Time" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Nakshatra (Specify):</label> 
+                                    <select id="nakshatra" name="nakshatra" class="form-control">
+                                        <option>Choose Rashi</option>
+                                        <option value="Ashwini">Ashwini</option>
+                                        <option value="Ardra">Ardra</option>
+                                        <option value="Aslesha">Aslesha</option>
+                                        <option value="Anuradha">Anuradha</option>
+                                        <option value="Bharani">Bharani</option>
+                                        <option value="Chitra">Chitra</option>
+                                        <option value="Dhanishta">Dhanishta</option>
+                                        <option value="Hasta">Hasta</option>
+                                        <option value="Jyeshta">Jyeshta</option>
+                                        <option value="Krittika">Krittika</option>
+                                        <option value="Moola">Moola</option>
+                                        <option value="Magha">Magha</option>
+                                        <option value="Mrigasira">Mrigasira</option>
+                                        <option value="Pushya">Pushya</option>
+                                        <option value="Purva Phalgini">Purva Phalgini</option>
+                                        <option value="Purva Bhadra">Purva Bhadra</option>
+                                        <option value="Purva Shadha">Purva Shadha</option>
+                                        <option value="Punarvasu">Punarvasu</option>
+                                        <option value="Rohini">Rohini</option>
+                                        <option value="Swati">Swati</option>
+                                        <option value="Revati">Revati</option>
+                                        <option value="Shattarka">Shattarka</option>
+                                        <option value="Shravan">Shravan</option>
+                                        <option value="Uttara Phalguni">Uttara Phalguni</option>
+                                        <option value="Uttara Bhadra">Uttara Bhadra</option>
+                                        <option value="Uttara Shadha">Uttara Shadha</option>
+                                        <option value="Vishakha">Vishakha</option>
+                                        <option value="NA">Unknown</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Gan (Specify):</label> 
+                                    <select size="1" id="gan" name="gan" class="form-control" style="height: 45px !important;">
+                                        <option>Choose Gan</option>
+                                        <option value="Dev Gan">Dev Gan</option>
+                                        <option value="Manushya Gan">Manushya Gan</option>
+                                        <option value="Rakshas Gan"> Rakshas Gan</option>
+                                        <option value="NA">Unknown</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Birth Place:</label> 
+                                    <select name="birthplace" id="birthplace" class="form-control">
+                                        <option>Choose Birth Place</option>
+                                        <option value="Ahmednagar">Ahmednagar</option>
+                                        <option value="Akola">Akola</option>
+                                        <option value="Amravati">Amravati</option>
+                                        <option value="Aurangabad">Aurangabad</option>
+                                        <option value="Beed">Beed</option>
+                                        <option value="Bhandara">Bhandara</option>
+                                        <option value="Buldhana">Buldhana</option>
+                                        <option value="Chandrapur">Chandrapur</option>
+                                        <option value="Dhule">Dhule</option>
+                                        <option value="Gadchiroli">Gadchiroli</option>
+                                        <option value="Gondia">Gondia</option>
+                                        <option value="Hingoli">Hingoli</option>
+                                        <option value="Jalgao">Jalgao</option>
+                                        <option value="Jalna">Jalna</option>
+                                        <option value="Kolhapur">Kolhapur</option>
+                                        <option value="Latur">Latur</option>
+                                        <option value="Mumbai City">Mumbai City</option>
+                                        <option value="Mumbai suburban">Mumbai suburban</option>
+                                        <option value="Nanded">Nanded</option>
+                                        <option value="Nandurbar">Nandurbar</option>
+                                        <option value="Nagpur">Nagpur</option>
+                                        <option value="Nashik">Nashik</option>
+                                        <option value="Osmanabad">Osmanabad</option>
+                                        <option value="Parbhani">Parbhani</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Raigad">Raigad</option>
+                                        <option value="Ratnagiri">Ratnagiri</option>
+                                        <option value="Sangli">Sangli</option>
+                                        <option value="Satara">Satara</option>
+                                        <option value="Sindhudurg">Sindhudurg</option>
+                                        <option value="Solapur">Solapur</option>
+                                        <option value="Thane">Thane</option>
+                                        <option value="Wardha">Wardha</option>
+                                        <option value="Washim">Washim</option>
+                                        <option value="Yavatmal">Yavatmal</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Charan (Specify):</label> 
+                                    <select id="charan" name="charan" class="form-control" style="height: 45px !important;">
+                                        <option>Choose Charan</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="NA">Unknown</option>
+                                    </select>
+                                    
+                                    <label class="fieldlabels">Mangal (Specify):</label> 
+                                    <select name="mangal" id="mangal" class="form-control">
+                                        <option>Choose mangal</option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="Saumya">Saumya</option>
+                                        <option value="Nirdosh">Nirdosh</option>
+                                        <option value="NA">Unknown</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Devak (Specify):</label> 
+                                    <input type="text" name="devak" id="devak" placeholder="Devak" />
+                                </div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Educational Information:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 3 - 8</h2>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="fieldlabels">Education Area:</label> 
+                                    <select name="educationarea" id="educationarea" class="form-control">
+                                        <option>Choose Education Area</option>
+                                        <option value="10">10th Pass</option>
+                                        <option value="12">12th Pass</option>
+                                        <option value="Graduate">Graduate</option>
+                                        <option value="PostGraduate">Post Graduate</option>
+                                        <option value="doctor">Doctor</option>
+                                        <option value="engineer">Engineer</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Occupation Details:</label> 
+                                    <input type="text" name="occupationdetails" id="occupationdetails" placeholder="Occupation Details" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Education :</label> 
+                                    <input type="text" name="education" id="education" placeholder="Education" />
+
+                                    <label class="fieldlabels">Income (Per Annum):</label> 
+                                    <input type="text" name="income" id="income" placeholder="Income" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Occupation Type:</label> 
+                                    <select name="occupationtype" id="occupationtype" class="form-control">
+                                        <option value="">Choose Occupation Type</option>
+                                        <option value="noservice">No Service or Pursuing Education</option>
+                                        <option value="pvt">Private Service</option>
+                                        <option value="pvt2">Own Business or Own Practice</option>
+                                        <option value="govt">Government Service</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                   
+                                    <label class="fieldlabels">Working in City/Country:</label> 
+                                    <select id="workingplace" name="workingplace" class="form-control">
+                                        <option>Choose Working Place</option>
+                                        <option value="Ahmednagar">Ahmednagar</option>
+                                        <option value="Akola">Akola</option>
+                                        <option value="Amravati">Amravati</option>
+                                        <option value="Aurangabad">Aurangabad</option>
+                                        <option value="Beed">Beed</option>
+                                        <option value="Bhandara">Bhandara</option>
+                                        <option value="Buldhana">Buldhana</option>
+                                        <option value="Chandrapur">Chandrapur</option>
+                                        <option value="Dhule">Dhule</option>
+                                        <option value="Gadchiroli">Gadchiroli</option>
+                                        <option value="Gondia">Gondia</option>
+                                        <option value="Hingoli">Hingoli</option>
+                                        <option value="Jalgao">Jalgao</option>
+                                        <option value="Jalna">Jalna</option>
+                                        <option value="Kolhapur">Kolhapur</option>
+                                        <option value="Latur">Latur</option>
+                                        <option value="Mumbai City">Mumbai City</option>
+                                        <option value="Mumbai suburban">Mumbai suburban</option>
+                                        <option value="Nanded">Nanded</option>
+                                        <option value="Nandurbar">Nandurbar</option>
+                                        <option value="Nagpur">Nagpur</option>
+                                        <option value="Nashik">Nashik</option>
+                                        <option value="Osmanabad">Osmanabad</option>
+                                        <option value="Parbhani">Parbhani</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Raigad">Raigad</option>
+                                        <option value="Ratnagiri">Ratnagiri</option>
+                                        <option value="Sangli">Sangli</option>
+                                        <option value="Satara">Satara</option>
+                                        <option value="Sindhudurg">Sindhudurg</option>
+                                        <option value="Solapur">Solapur</option>
+                                        <option value="Thane">Thane</option>
+                                        <option value="Wardha">Wardha</option>
+                                        <option value="Washim">Washim</option>
+                                        <option value="Yavatmal">Yavatmal</option>
+                                        <option value="Andaman and Nicobar Island (UT)">Andaman and Nicobar Island (UT)</option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chandigarh (UT)">Chandigarh (UT)</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Dadra and Nagar Haveli (UT)">Dadra and Nagar Haveli (UT)</option>
+                                        <option value="Daman and Diu (UT)">Daman and Diu (UT)</option>
+                                        <option value="Delhi (NCT">Delhi (NCT)</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Lakshadweep (UT)">Lakshadweep (UT)</option>
+                                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Odisha">Odisha</option>
+                                        <option value="Puducherry (UT)">Puducherry (UT)</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajastha">Rajastha</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telangana">Telangana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttarakhand">Uttarakhand</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Address Information:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 4 - 8</h2>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="fieldlabels">Aadhar Card :</label> 
+                                    <input type="number"  name="aadharcard" id="aadharcard" placeholder="Aadhar Card" />
+
+                                    <label class="fieldlabels">Primary Mobile No (SMS Alert):</label> 
+                                    <input type="number" minlength="10" maxlength="10" name="primarymobileno" id="primarymobileno" placeholder="Primary Mobile No" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Pan Card :</label> 
+                                    <input type="text" name="pancard" id="pancard" placeholder="Pan Card" />
+
+                                    <label class="fieldlabels">Alternate Mobile No :</label> 
+                                    <input type="number" maxlength="10" name="altmobileno" id="altmobileno" placeholder="Alternate Mobile No" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Residence Address :</label> 
+                                    <input type="text" name="residenceaddress" id="residenceaddress" placeholder="Residence Address" /> 
+
+                                    <label class="fieldlabels">Email Id :</label> 
+                                    <input type="email" name="emailid" id="emailid" placeholder="Email Id" /> 
+                                </div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Family Background:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 5 - 8</h2>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="fieldlabels">Father (Is Alive) :</label> 
+                                    <select id="fatheralive" name="fatheralive" class="form-control">
+                                        <option selected>Choose Father Alive Option</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Married Brothers:</label> 
+                                    <input type="number" name="marriedbrothers" id="marriedbrothers" placeholder="Married Brothers" />
+
+                                    <label class="fieldlabels">Parents Fullname:</label> 
+                                    <input type="text" name="parentsfullname" id="parentsfullname" placeholder="Parents Fullname" />
+
+                                    <label class="fieldlabels">Surnames of Relatives:</label> 
+                                    <input type="text" name="surnamesofrelatives" id="surnamesofrelatives" placeholder="Surnames of Relatives" />
+
+                                    <label class="fieldlabels">Native Taluka:</label> 
+                                    <input type="text" name="NativeTaluka" id="NativeTaluka" placeholder="Native Taluka" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Mother (Is Alive) :</label> 
+                                    <select id="motheralive" name="motheralive" class="form-control">
+                                        <option selected>Choose Mother Alive Option</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Sisters :</label> 
+                                    <input type="number" name="noofsisters" id="noofsisters" placeholder="Sisters" />
+
+                                    <label class="fieldlabels">Parents Occupation:</label> 
+                                    <input type="text" name="parentsoccupation" id="parentsoccupation" placeholder="Parents Occupation" />
+
+                                    <label class="fieldlabels">Native District:</label> 
+                                    <select name="nativedistrict" id="nativedistrict" class="form-control">
+                                        <option>Choose Native District</option>
+                                        <option value="Ahmednagar">Ahmednagar</option>
+                                        <option value="Akola">Akola</option>
+                                        <option value="Amravati">Amravati</option>
+                                        <option value="Aurangabad">Aurangabad</option>
+                                        <option value="Beed">Beed</option>
+                                        <option value="Bhandara">Bhandara</option>
+                                        <option value="Buldhana">Buldhana</option>
+                                        <option value="Chandrapur">Chandrapur</option>
+                                        <option value="Dhule">Dhule</option>
+                                        <option value="Gadchiroli">Gadchiroli</option>
+                                        <option value="Gondia">Gondia</option>
+                                        <option value="Hingoli">Hingoli</option>
+                                        <option value="Jalgao">Jalgao</option>
+                                        <option value="Jalna">Jalna</option>
+                                        <option value="Kolhapur">Kolhapur</option>
+                                        <option value="Latur">Latur</option>
+                                        <option value="Mumbai City">Mumbai City</option>
+                                        <option value="Mumbai suburban">Mumbai suburban</option>
+                                        <option value="Nanded">Nanded</option>
+                                        <option value="Nandurbar">Nandurbar</option>
+                                        <option value="Nagpur">Nagpur</option>
+                                        <option value="Nashik">Nashik</option>
+                                        <option value="Osmanabad">Osmanabad</option>
+                                        <option value="Parbhani">Parbhani</option>
+                                        <option value="Pune">Pune</option>
+                                        <option value="Raigad">Raigad</option>
+                                        <option value="Ratnagiri">Ratnagiri</option>
+                                        <option value="Sangli">Sangli</option>
+                                        <option value="Satara">Satara</option>
+                                        <option value="Sindhudurg">Sindhudurg</option>
+                                        <option value="Solapur">Solapur</option>
+                                        <option value="Thane">Thane</option>
+                                        <option value="Wardha">Wardha</option>
+                                        <option value="Washim">Washim</option>
+                                        <option value="Yavatmal">Yavatmal</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Family Wealth:</label> 
+                                    <input type="text" name="FamilyWealth" id="FamilyWealth" placeholder="Family Wealth" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Brothers :</label> 
+                                    <input type="number" name="noofbrothers" id="noofbrothers" placeholder="Brothers" /> 
+
+                                    <label class="fieldlabels">Married Sisters :</label> 
+                                    <input type="number" name="marriedsisters" id="marriedsisters" placeholder="Married Sisters" /> 
+
+                                    <label class="fieldlabels">Parents Resident City:</label> 
+                                    <input type="text" name="parentsresidentcity" id="parentsresidentcity" placeholder="Parents Resident City" />
+
+                                    <label class="fieldlabels">Native City:</label> 
+                                    <input type="text" name="NativeCity" id="NativeCity" placeholder="Native City" />
+                                </div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Expectation Information:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 6 - 8</h2>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="fieldlabels">Preferred Cities :</label> 
+                                    <input type="text" name="PreferredCities" id="PreferredCities" placeholder="Preferred Cities" />
+
+                                    <label class="fieldlabels">Expected Height Above:</label> 
+                                    <input type="number" name="ExpectedHeightAbove" id="ExpectedHeightAbove" placeholder="Expected Height Above" />
+
+                                    <label class="fieldlabels">Expected Income (Per Annum):</label> 
+                                    <input type="number" name="ExpectedIncome" id="ExpectedIncome" placeholder="Expected Income" />
+
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Expected Caste :</label> 
+                                    <select name="ExpectedCaste" id="ExpectedCaste" class="form-control">
+                                        <option>Choose Expected Caste</option>
+                                        <option value="Deshmukh">Deshmukh</option>
+                                        <option value="96 Kuli">96 Kuli</option>
+                                        <option value="Maratha">Maratha</option>
+                                        <option value="kunbi">kunbi</option>
+                                        <option value="Deshmukh Maratha">Deshmukh Maratha</option>
+                                        <option value="96 Kuli Maratha">96 Kuli Maratha</option>
+                                        <option value="Tirale kunbi">Tirale kunbi</option>
+                                        <option value="Does Not Matter">Does Not Matter</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Divorcee :</label> 
+                                    <select name="Divorcee" id="Divorcee" class="form-control">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="Does Not Matter">Does Not Matter</option>
+                                    </select>
+
+                                    <label class="fieldlabels">Expected Education:</label> 
+                                    <input type="text" name="ExpectedEducation" id="ExpectedEducation" placeholder="Expected Education" />
+                                </div>
+                                <div class="col-4">
+                                    <label class="fieldlabels">Max Age Difference :</label> 
+                                    <input type="number" name="MaxAgeDifference" id="MaxAgeDifference" placeholder="Max Age Difference" /> 
+
+                                    <label class="fieldlabels">Expected Occupation :</label> 
+                                    <input type="text" name="ExpectedOccupation" id="ExpectedOccupation" placeholder="Expected Occupation" /> 
+                                </div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" /> 
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Profile Photos Upload:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 7 - 8</h2>
+                                </div>
+                            </div> 
+                                <label class="fieldlabels">Upload Primary Profile Photo:</label> 
+                                <input type="file" name="photo1" id="photo1" accept="image/*">
+                            
+                                <label class="fieldlabels">Upload 2nd Profile Photo:</label> 
+                                <input type="file"  name="photo2" id="photo2"  accept="image/*">
+                            
+                                <label class="fieldlabels">Upload 3rd Profile Photo:</label> 
+                                <input type="file"  name="photo3" id="photo3"  accept="image/*">
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Submit" /> 
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Payment:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">Step 8 - 8</h2>
+                                </div>
+                            </div> <br><br>
+                            <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                            <div class="row justify-content-center">
+                                <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                            </div> <br><br>
+                            <div class="row justify-content-center">
+                                <div class="col-7 text-center">
+                                    <h5 class="purple-text text-center">You Have Successfully updated the profile information.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
